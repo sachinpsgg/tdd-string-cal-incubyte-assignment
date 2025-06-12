@@ -35,4 +35,9 @@ describe('add function', () => {
     it('should ignore numbers bigger than 1000', () => {
         expect(add("2,1001")).toBe(2);
     });
+
+    //test 8Add commentMore actions
+    it('should support multi-character delimiters', () => {
+        expect(add("//[***]\n1***2***3")).toBe(6);
+    });
 });

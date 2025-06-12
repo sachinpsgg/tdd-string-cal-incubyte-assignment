@@ -2,14 +2,16 @@ function add(numbers) {
     if (numbers === "") {
         return 0;
     }
-    let delimiter = ',';
+    let delimiters = [','];
     if (numbers.startsWith('//')) {
         const parts = numbers.split('\n');
-        delimiter = parts[0].slice(2);
+        const delimiterPart = parts[0].slice(2);
+        delimiters = delimiterPart.split(/\]\[|\[/).map(d => d.replace(/\[|\]/g, ''));
         numbers = parts[1];
     }
 
-    const numArray = numbers.split(new RegExp(`[\\n${delimiter}]`)).map(Number);
+    const regex = new RegExp(`[\\n${delimiters.join('')}]`);
+    const numArray = numbers.split(regex).map(Number);
     const negatives = numArray.filter(num => num < 0);
     if (negatives.length > 0) {
         throw new Error(`negatives not allowed: ${negatives.join(', ')}`);
