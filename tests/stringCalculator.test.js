@@ -36,8 +36,13 @@ describe('add function', () => {
         expect(add("2,1001")).toBe(2);
     });
 
-    //test 8Add commentMore actions
+    //test 8
     it('should support multi-character delimiters', () => {
         expect(add("//[***]\n1***2***3")).toBe(6);
+    });
+
+    //test 9
+    it('should support multiple delimiters of any length', () => {
+        expect(add("//[***][%]\n1***2%3")).toBe(6);
     });
 });
