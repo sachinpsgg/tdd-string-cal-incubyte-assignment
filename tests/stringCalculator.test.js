@@ -15,4 +15,9 @@ describe('add function', () => {
     it('should return the sum for two numbers separated by a comma', () => {
         expect(add("1,2")).toBe(3);
     });
+
+    //test 4
+    it('should handle new lines between numbers', () => {
+        expect(add("1\n2,3")).toBe(6);
+    });
 });
